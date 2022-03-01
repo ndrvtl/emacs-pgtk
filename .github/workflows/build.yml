@@ -10,10 +10,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository and launch build
+    - name: Checkout repository
       uses: actions/checkout@v3
       with:
         path: main
+    - name: Build
       run: ./build.sh
 
     - name: Store package
