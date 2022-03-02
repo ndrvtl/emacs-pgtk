@@ -65,6 +65,7 @@ RUN cd emacs &&\
     --with-modules \
     --with-mailutils \
     --without-xaw3d \
+    --with-xinput2 \
     CFLAGS="-O2 -pipe -fomit-frame-pointer"
 
 RUN cd emacs &&\
