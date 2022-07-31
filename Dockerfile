@@ -73,7 +73,7 @@ RUN cd emacs &&\
 
 # Create package
 RUN EMACS_GIT_VERSION=$(git -C ./emacs rev-parse --short HEAD) \
-    EMACS_VERSION=$(sed -ne 's/AC_INIT(GNU Emacs, \([0-9.]\+\), .*/\1/p' ./emacs/configure.ac) \
+    EMACS_VERSION=$(sed -e 's/^AC_INIT(\[GNU Emacs],[  ]*\[\([^]]*\).*/\1/p' ./emacs/configure.ac) \
     PKG_NAME=/opt/emacs-pgtk_${EMACS_VERSION}.${EMACS_GIT_VERSION} \
     BINARIES=${PKG_NAME}/usr/bin \
     SHLIBS=${PKG_NAME}/usr/lib/emacs/${EMACS_VERSION}/native-lisp &&\
