@@ -41,7 +41,7 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
 
 # Clone emacs
 RUN update-ca-certificates &&\
-    git clone --depth 1 https://github.com/emacs-mirror/emacs
+    git clone --depth 1 --branch emacs-29 https://github.com/emacs-mirror/emacs
 
 # Build
 ENV CC="gcc-10"
