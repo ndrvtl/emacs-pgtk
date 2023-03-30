@@ -15,7 +15,7 @@ How to build the package:
 ```shell
 $ git clone https://github.com/ndrvtl/emacs-pgtk
 $ cd emacs-pgtk
-$ ./build.sh
+$ make
 ```
 
 * On *GitHub* with *"GitHub Actions"*  
