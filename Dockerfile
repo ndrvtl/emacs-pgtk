@@ -39,9 +39,10 @@ RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
     pkg-config \
     texinfo
 
+RUN update-ca-certificates
+
 # Clone emacs
-RUN update-ca-certificates &&\
-    git clone --depth 1 --branch emacs-29 https://github.com/emacs-mirror/emacs
+COPY emacs emacs
 
 # Build
 ENV CC="gcc-10"
