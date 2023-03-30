@@ -71,10 +71,11 @@ RUN cd emacs &&\
 
 RUN make -C emacs NATIVE_FULL_AOT=1 -j $(nproc)
 
+ARG EMACS_VERSION
+ARG PKG_VERSION
+
 # Create package
-RUN EMACS_GIT_VERSION=$(git -C ./emacs rev-parse --short HEAD) \
-    EMACS_VERSION=$(sed -ne 's/AC_INIT(\[GNU Emacs\], \[\([0-9.]\+\)\], .*/\1/p' ./emacs/configure.ac) \
-    PKG_NAME=/opt/emacs-pgtk_${EMACS_VERSION}.${EMACS_GIT_VERSION} \
+RUN PKG_NAME=/opt/emacs-pgtk_${PKG_VERSION} \
     BINARIES=${PKG_NAME}/usr/bin \
     SHLIBS=${PKG_NAME}/usr/lib/emacs/${EMACS_VERSION}/native-lisp &&\
     cd emacs &&\
@@ -94,7 +95,7 @@ License: GPL-3" \
     > ${PKG_NAME}/DEBIAN/copyright &&\
     echo "Package: emacs-pgtk\n\
 Source: emacs\n\
-Version: ${EMACS_VERSION}.${EMACS_GIT_VERSION}-1\n\
+Version: ${PKG_VERSION}-1\n\
 Architecture: amd64\n\
 Maintainer: ndrvtl <7734025+ndrvtl@users.noreply.github.com>\n\
 Depends: libacl1, libc6, libdbus-1-3, libgccjit0, libgif7, libgtk-3-0, libjansson4, libjpeg62-turbo, libm17n-0, libotf0, librsvg2-2, libtiff5\n\
@@ -122,4 +123,4 @@ Description: Emacs with pure GTK support.\n\
  CFLAGS=\"-O2 -pipe -fomit-frame-pointer\"" > ${PKG_NAME}/DEBIAN/control &&\
     dpkg-deb --build ${PKG_NAME} &&\
     mkdir /opt/packages &&\
-    mv ${PKG_NAME}.deb /opt/packages/emacs-pgtk_${EMACS_VERSION}.${EMACS_GIT_VERSION}-1.deb
+    mv ${PKG_NAME}.deb /opt/packages/emacs-pgtk_${PKG_VERSION}-1.deb
