@@ -69,8 +69,7 @@ RUN cd emacs &&\
     --with-xinput2 \
     CFLAGS="-O2 -pipe -fomit-frame-pointer"
 
-RUN cd emacs &&\
-    make NATIVE_FULL_AOT=1 -j $(nproc)
+RUN make -C emacs NATIVE_FULL_AOT=1 -j $(nproc)
 
 # Create package
 RUN EMACS_GIT_VERSION=$(git -C ./emacs rev-parse --short HEAD) \
