@@ -124,3 +124,8 @@ Description: Emacs with pure GTK support.\n\
     dpkg-deb --build ${PKG_NAME} &&\
     mkdir /opt/packages &&\
     mv ${PKG_NAME}.deb /opt/packages/emacs-pgtk_${PKG_VERSION}-1.deb
+
+# Smoketest package
+RUN set -eux; \
+    apt-get install /opt/packages/emacs-pgtk_${PKG_VERSION}-1.deb ; \
+    emacs --version
