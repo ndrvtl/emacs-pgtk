@@ -2,12 +2,12 @@ FROM debian:bullseye
 WORKDIR /opt
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list &&\
-    apt-get update &&\
-    apt-get install --yes --no-install-recommends auto-apt-proxy &&\
-    echo "192.168.0.100 apt-proxy" >> /etc/hosts &&\
+RUN sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && \
     apt-get install --yes --no-install-recommends  \
-    apt-transport-https\
+    apt-transport-https \
     autoconf \
     build-essential \
     ca-certificates\

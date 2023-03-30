@@ -22,7 +22,7 @@ EMACS_VERSION=$(shell grep -Po 'AC_INIT.+\K29\.[^\]]+' emacs/configure.ac)
 PKG_VERSION=$(EMACS_VERSION).$(shell date +%Y%m%d).$(shell git -C emacs rev-parse --short HEAD)
 IMAGE=ndrvtl/emacs-pgtk
 bullseye:
-	docker build --pull --build-arg EMACS_VERSION=$(EMACS_VERSION) --build-arg PKG_VERSION=$(PKG_VERSION) --tag $(IMAGE):$@ -f Dockerfile .
+	DOCKER_BUILDKIT=1 docker build --pull --build-arg EMACS_VERSION=$(EMACS_VERSION) --build-arg PKG_VERSION=$(PKG_VERSION) --tag $(IMAGE):$@ -f Dockerfile .
 	container="$$(docker create $(IMAGE):$@)" ; docker cp "$$container:/opt/packages" . ; docker rm "$$container"
 
 clean:
