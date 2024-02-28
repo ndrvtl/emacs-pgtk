@@ -34,7 +34,6 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     libgnutls28-dev \
     libgpm-dev \
     libgtk-3-dev \
-    libwebkit2gtk-4.1-dev \
     libjansson-dev \
     libjbig-dev \
     libjpeg-dev \
@@ -48,6 +47,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     librsvg2-dev  \
     libsystemd-dev \
     libtiff-dev \
+    libtree-sitter-dev \
+    libwebkit2gtk-4.1-dev \
     libxml2-dev \
     libxpm-dev \
     texinfo \
@@ -65,23 +66,25 @@ RUN set -eux; \
     ./autogen.sh ; \
     ./configure \
     --prefix "/usr" \
-    --with-native-compilation \
-    --with-pgtk \
-    --with-xwidgets \
-    --with-json \
-    --with-gnutls \
     --with-dbus \
     --with-gif \
+    --with-gnutls \
     --with-jpeg \
+    --with-json \
+    --with-libsystemd \
+    --with-mailutils \
+    --with-modules \
+    --with-native-compilation \
+    --with-pgtk \
     --with-png \
     --with-rsvg \
     --with-tiff \
+    --with-tree-sitter \
     --with-xft \
-    --with-xpm \
-    --with-modules \
-    --with-mailutils \
-    --without-xaw3d \
     --with-xinput2 \
+    --with-xpm \
+    --with-xwidgets \
+    --without-xaw3d \
     CFLAGS="-O2 -pipe -fomit-frame-pointer"
 
 # BUILD
