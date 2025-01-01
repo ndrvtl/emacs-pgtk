@@ -7,9 +7,9 @@ default:
 	$(MAKE) $(VERSION_CODENAME)
 
 REMOTE=https://github.com/emacs-mirror/emacs.git
-HEAD=emacs-29
+HEAD=emacs-30
 fetch: emacs/.git
-# Fetch last commit of emacs-29 branch and checkout it.
+# Fetch last commit of emacs-30 branch and checkout it.
 	git -C emacs fetch --force --depth 1 $(REMOTE) refs/heads/$(HEAD):refs/remote/origin/$(HEAD)
 	git -C emacs checkout --detach FETCH_HEAD
 
@@ -18,15 +18,14 @@ emacs/.git:
 	mkdir $(dir $@)
 	git -C emacs init .
 
-EMACS_VERSION=$(shell grep -Po 'AC_INIT.+\K29\.[^\]]+' emacs/configure.ac)
+EMACS_VERSION=$(shell grep -Po 'AC_INIT.+\K30\.[^\]]+' emacs/configure.ac)
 PKG_VERSION=$(EMACS_VERSION).$(shell date +%Y%m%d).$(shell git -C emacs rev-parse --short HEAD)
 IMAGE=ndrvtl/emacs-pgtk
-bookworm bullseye:
+bookworm:
 	DOCKER_BUILDKIT=1 docker build --pull --build-arg EMACS_VERSION=$(EMACS_VERSION) --build-arg PKG_VERSION=$(PKG_VERSION) --tag $(IMAGE):$@ -f Dockerfile.$@ .
 	container="$$(docker create $(IMAGE):$@)" ; docker cp "$$container:/opt/packages" . ; docker rm "$$container"
 
 clean:
 	rm -rf emacs packages
-	docker rmi --force $(IMAGE):bullseye
 	docker rmi --force $(IMAGE):bookworm
 	docker builder prune --force --all
