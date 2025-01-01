@@ -48,7 +48,6 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     libsystemd-dev \
     libtiff-dev \
     libtree-sitter-dev \
-    libwebkit2gtk-4.1-dev \
     libxml2-dev \
     libxpm-dev \
     texinfo \
@@ -83,7 +82,6 @@ RUN set -eux; \
     --with-xft \
     --with-xinput2 \
     --with-xpm \
-    --with-xwidgets \
     --without-xaw3d \
     CFLAGS="-O2 -pipe -fomit-frame-pointer"
 
@@ -118,7 +116,7 @@ Source: emacs\n\
 Version: ${PKG_VERSION}-1\n\
 Architecture: amd64\n\
 Maintainer: ndrvtl <7734025+ndrvtl@users.noreply.github.com>\n\
-Depends: libacl1, libc6, libdbus-1-3, libgccjit0, libgif7, libgtk-3-0, libjansson4, libjpeg62-turbo, libm17n-0, libotf1, librsvg2-2, libtiff6, libwebkit2gtk-4.1-0\n\
+Depends: libacl1, libc6, libdbus-1-3, libgccjit0, libgif7, libgtk-3-0, libjansson4, libjpeg62-turbo, libm17n-0, libotf1, librsvg2-2, libtiff6\n\
 Section: editors\n\
 Priority: optional\n\
 Homepage: https://www.gnu.org/software/emacs/\n\
@@ -126,7 +124,6 @@ Description: Emacs with pure GTK support.\n\
  Compilation options:\n\
  --with-native-compilation \n\
  --with-pgtk \n\
- --with-xwidgets \n\
  --with-json \n\
  --with-gnutls \n\
  --with-dbus \n\
