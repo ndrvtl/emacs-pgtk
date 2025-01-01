@@ -35,4 +35,8 @@ $ make
 
 Manually launching the workflow using the *actions* menu or pushing a change on the repository.
 
+## Acknowledgments
+
+Big thanks to Étienne Bersac (https://github.com/bersace) that basically has rewrote all the build infrastructure.
+
 
