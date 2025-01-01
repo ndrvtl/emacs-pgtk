@@ -1,10 +1,9 @@
-# emacs-pgtk - Building Emacs 29 Debian package with pure GTK support
+# emacs-pgtk - Building Emacs 30 Debian package with pure GTK support
 
 ## Purpose
 
 Pure GTK Emacs runs better on Wayland.
-This project builds an *Emacs* package from the latest git emacs-29 branch with support to *pure GTK* and native compilation,
-for either *Bookworm* or *Bullseye* system.
+This project builds an *Emacs* package from the latest git emacs-30 branch with support to *pure GTK* and native compilation, for *Bookworm* systems.
 
 ## Caveats
 
@@ -34,6 +33,7 @@ $ make
 ## Build using GitHub Actions
 
 Manually launching the workflow using the *actions* menu or pushing a change on the repository.
+
 
 ## Acknowledgments
 
