@@ -3,7 +3,7 @@
 ## Purpose
 
 Pure GTK Emacs runs better on Wayland.
-This project builds an *Emacs* package from the latest git emacs-30 branch with support to *pure GTK* and native compilation, for *Bookworm* systems.
+This project builds an *Emacs* package from the latest git emacs-30 branch with support to *pure GTK* and native compilation, for *Trixie* and *Bookworm* systems.
 
 ## Caveats
 
@@ -38,5 +38,3 @@ Manually launching the workflow using the *actions* menu or pushing a change on 
 ## Acknowledgments
 
 Big thanks to Étienne Bersac (https://github.com/bersace) who has basically rewritten all the build infrastructure.
-
-
