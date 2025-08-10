@@ -7,7 +7,7 @@ This project builds an *Emacs Debian* package from the latest emacs-30 git branc
 
 ## Caveats
 
-* The resulting package isn't *lintian* clean: it doesn't have a man page and a changelog, I included a copyright file, but I assumed all files are under *GPL 3.0*, the official *Debian Emacs* package is more thorough, additionally, it lacks a proper cryptographic signature. Anywho, since it's not supposed to be officially distributed, it's good enoug,h for my purpose.
+* The resulting package isn't *lintian* clean: it doesn't have a man page and a changelog, I included a copyright file, but I assumed all files are under *GPL 3.0*, the official *Debian Emacs* package is more thorough, additionally, it lacks a proper cryptographic signature. Anywho, since it's not supposed to be officially distributed, it's good enough for my purpose.
 * The native compilation is done at build time using: `make NATIVE_FULL_AOT=1`
 
 
