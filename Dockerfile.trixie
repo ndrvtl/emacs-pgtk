@@ -105,6 +105,7 @@ RUN set -eux ; \
     mkdir ${PKG_NAME}/DEBIAN ; \
     rm ${PKG_NAME}/usr/share/glib-2.0/schemas/gschemas.compiled ; \
     rm ${PKG_NAME}/usr/share/info/dir ; \
+    rm -f ${PKG_NAME}/usr/share/info/*.txt ; \
     echo "Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/\n\
 Upstream-Name: Emacs\n\
 Source: https://www.gnu.org/software/emacs/\n\n\
