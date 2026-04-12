@@ -70,7 +70,6 @@ RUN set -eux; \
     --with-gif \
     --with-gnutls \
     --with-jpeg \
-    --with-json \
     --with-libsystemd \
     --with-mailutils \
     --with-modules \
