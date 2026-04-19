@@ -102,6 +102,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 
 # Install libtree-sitter 0.25 built from sid source
 COPY --from=tree-sitter-builder /output/*.deb /tmp/ts-debs/
+# Also copy the tres-sitter to /opt/packages/
+COPY --from=tree-sitter-builder /output/*.deb /opt/packages/
 RUN dpkg -i /tmp/ts-debs/*.deb && rm -rf /tmp/ts-debs
 
 ENV CC="gcc-14"
