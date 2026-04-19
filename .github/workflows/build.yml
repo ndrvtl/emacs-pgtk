@@ -20,4 +20,4 @@ jobs:
       uses: actions/upload-artifact@v5
       with:
         name: emacs-pgtk
-        path: ./packages/emacs-pgtk_*.deb
+        path: ./packages/emacs/emacs-pgtk_*.deb
