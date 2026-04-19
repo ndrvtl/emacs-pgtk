@@ -19,5 +19,7 @@ jobs:
     - name: Store package
       uses: actions/upload-artifact@v5
       with:
-        name: emacs-pgtk
-        path: ./packages/emacs/emacs-pgtk_*.deb
+        name: emacs-pgtk-with-deps
+        path: |
+          ./packages/emacs/emacs-pgtk_*.deb
+          ./packages/treesitter/output/*.deb
