@@ -133,6 +133,7 @@ RUN set -eux; \
     --with-xinput2 \
     --with-xpm \
     --without-xaw3d \
+    --without-cairo \
     CFLAGS="-O2 -pipe -fomit-frame-pointer"
 
 # BUILD
