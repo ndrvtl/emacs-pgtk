@@ -20,4 +20,6 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: emacs-pgtk
-        path: ./packages/emacs-pgtk_*.deb
+        path: |
+          ./packages/emacs-pgtk_*.deb
+          ./packages/libtree-sitter*.deb

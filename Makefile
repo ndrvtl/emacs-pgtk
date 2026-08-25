@@ -29,19 +29,19 @@ CONTAINER_PREFIX = $(if $(filter docker,$(CONTAINER)),DOCKER_BUILDKIT=1,)
 
 .PHONY: tree-sitter
 tree-sitter:
-	mkdir -p packages/treesitter
+	mkdir -p packages
 	$(CONTAINER_PREFIX) $(CONTAINER) build --pull --build-arg TREE_SITTER_VERSION=$(TREE_SITTER_VERSION) --target tree-sitter-builder --tag $(IMAGE):tree-sitter -f Dockerfile.trixie .
-	container="$$($(CONTAINER) create $(IMAGE):tree-sitter)" ; $(CONTAINER) cp "$$container:/output/." ./packages/treesitter ; $(CONTAINER) rm "$$container"
+	container="$$($(CONTAINER) create $(IMAGE):tree-sitter)" ; $(CONTAINER) cp "$$container:/output/." ./packages ; $(CONTAINER) rm "$$container"
 	$(CONTAINER) rmi $(IMAGE):tree-sitter
 
 trixie:
-	mkdir -p packages/emacs packages/treesitter
+	mkdir -p packages
 	# Build tree-sitter stage and extract packages
 	$(CONTAINER_PREFIX) $(CONTAINER) build --pull --build-arg TREE_SITTER_VERSION=$(TREE_SITTER_VERSION) --target tree-sitter-builder --tag $(IMAGE):trixie-ts -f Dockerfile.trixie .
-	container="$$($(CONTAINER) create $(IMAGE):trixie-ts)" ; $(CONTAINER) cp "$$container:/output/." ./packages/treesitter ; $(CONTAINER) rm "$$container"
-	# Build full image using tree-sitter stage as cache (no rebuild)
-	$(CONTAINER_PREFIX) $(CONTAINER) build --pull --cache-from $(IMAGE):trixie-ts --build-arg EMACS_VERSION=$(EMACS_VERSION) --build-arg PKG_VERSION=$(PKG_VERSION) --tag $(IMAGE):trixie -f Dockerfile.trixie .
-	container="$$($(CONTAINER) create $(IMAGE):trixie)" ; $(CONTAINER) cp "$$container:/opt/packages/." ./packages/emacs ; $(CONTAINER) rm "$$container"
+	container="$$($(CONTAINER) create $(IMAGE):trixie-ts)" ; $(CONTAINER) cp "$$container:/output/." ./packages ; $(CONTAINER) rm "$$container"
+	# Build full image, reusing cached tree-sitter stage (no rebuild)
+	$(CONTAINER_PREFIX) $(CONTAINER) build --pull --build-arg EMACS_VERSION=$(EMACS_VERSION) --build-arg PKG_VERSION=$(PKG_VERSION) --tag $(IMAGE):trixie -f Dockerfile.trixie .
+	container="$$($(CONTAINER) create $(IMAGE):trixie)" ; $(CONTAINER) cp "$$container:/opt/packages/." ./packages ; $(CONTAINER) rm "$$container"
 	$(CONTAINER) rmi $(IMAGE):trixie-ts
 
 clean:

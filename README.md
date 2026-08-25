@@ -28,7 +28,7 @@ $ cd emacs-pgtk
 $ make
 ```
 
-The Trixie build also produces `libtree-sitter0.26` and `libtree-sitter-dev` packages in `packages/treesitter/` (built from the sid source). Install the runtime package alongside Emacs, since the package depends on it and it's not available in Trixie.
+The Trixie build also produces `libtree-sitter0.26` and `libtree-sitter-dev` packages (built from the sid source), extracted to `packages/` alongside the Emacs package. Install the runtime package alongside Emacs, since the package depends on it and it's not available in Trixie.
 
 
 ## Build using GitHub Actions
