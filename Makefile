@@ -44,11 +44,6 @@ trixie:
 	container="$$($(CONTAINER) create $(IMAGE):trixie)" ; $(CONTAINER) cp "$$container:/opt/packages/." ./packages/emacs ; $(CONTAINER) rm "$$container"
 	$(CONTAINER) rmi $(IMAGE):trixie-ts
 
-bookworm:
-	mkdir -p packages
-	$(CONTAINER_PREFIX) $(CONTAINER) build --pull --build-arg EMACS_VERSION=$(EMACS_VERSION) --build-arg PKG_VERSION=$(PKG_VERSION) --tag $(IMAGE):bookworm -f Dockerfile.bookworm .
-	container="$$($(CONTAINER) create $(IMAGE):bookworm)" ; $(CONTAINER) cp "$$container:/opt/packages/." ./packages ; $(CONTAINER) rm "$$container"
-
 clean:
 	rm -rf emacs packages
 	$(CONTAINER) rmi --force $(IMAGE):bookworm

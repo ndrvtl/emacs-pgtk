@@ -3,7 +3,7 @@
 ## Purpose
 
 Pure GTK Emacs runs better on Wayland.
-This project builds an *Emacs Debian* package from the latest emacs-31 git branch, with support for *pure GTK* and native compilation, targeting *Trixie* and *Bookworm* systems.
+This project builds an *Emacs Debian* package from the latest emacs-31 git branch, with support for *pure GTK* and native compilation, targeting *Trixie* systems.
 
 ## Caveats
 
