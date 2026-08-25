@@ -1,9 +1,9 @@
-# emacs-pgtk - Building an Emacs 30 Debian package with pure GTK support
+# emacs-pgtk - Building an Emacs 31 Debian package with pure GTK support
 
 ## Purpose
 
 Pure GTK Emacs runs better on Wayland.
-This project builds an *Emacs Debian* package from the latest emacs-30 git branch, with support for *pure GTK* and native compilation, targeting *Trixie* and *Bookworm* systems.
+This project builds an *Emacs Debian* package from the latest emacs-31 git branch, with support for *pure GTK* and native compilation, targeting *Trixie* and *Bookworm* systems.
 
 ## Caveats
 
@@ -27,6 +27,8 @@ $ git clone https://github.com/ndrvtl/emacs-pgtk
 $ cd emacs-pgtk
 $ make
 ```
+
+The Trixie build also produces `libtree-sitter0.26` and `libtree-sitter-dev` packages in `packages/treesitter/` (built from the sid source). Install the runtime package alongside Emacs, since the package depends on it and it's not available in Trixie.
 
 
 ## Build using GitHub Actions
