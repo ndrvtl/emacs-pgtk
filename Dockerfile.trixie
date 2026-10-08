@@ -165,31 +165,17 @@ License: GPL-3" \
     > ${PKG_NAME}/DEBIAN/copyright ; \
     echo "Package: emacs-pgtk\n\
 Source: emacs\n\
-Version: ${PKG_VERSION}-1\n\
+Version: 99:${PKG_VERSION}-1\n\
 Architecture: amd64\n\
 Maintainer: ndrvtl <7734025+ndrvtl@users.noreply.github.com>\n\
 Depends: libacl1, libc6, libdbus-1-3, libgccjit0, libgif7, libgtk-3-0, libjpeg62-turbo, libm17n-0, libotf1, librsvg2-2, libtiff6, libtree-sitter0.26, libwebpdecoder3\n\
-Conflicts: emacs-common\n\
+Provides: emacs, emacs-bin-common, emacs-common, editor\n\
+Replaces: emacs, emacs-bin-common, emacs-common\n\
+Conflicts: emacs-gtk, emacs-lucid, emacs-nox\n\
 Section: editors\n\
 Priority: optional\n\
 Homepage: https://www.gnu.org/software/emacs/\n\
-Description: Emacs with pure GTK support.\n\
- Compilation options:\n\
- --with-native-compilation \n\
- --with-pgtk \n\
- --with-gnutls \n\
- --with-dbus \n\
- --with-gif \n\
- --with-jpeg \n\
- --with-png \n\
- --with-rsvg \n\
- --with-tiff \n\
- --with-xft \n\
- --with-xpm \n\
- --with-modules \n\
- --with-mailutils \n\
- --without-xaw3d \n\
- CFLAGS=\"-O2 -pipe -fomit-frame-pointer\"" > ${PKG_NAME}/DEBIAN/control ; \
+Description: Emacs with pure GTK support." > ${PKG_NAME}/DEBIAN/control ; \
     echo "Installed-Size: $(du -sk --apparent-size ${PKG_NAME}/usr | cut -f1)" >> ${PKG_NAME}/DEBIAN/control ; \
     dpkg-deb --build ${PKG_NAME} ; \
     mkdir /opt/packages ; \
